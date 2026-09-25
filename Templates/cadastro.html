@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro</title>
+    <link rel="stylesheet" href="static/css/cadastro.css">
+</head>
+<body>
+
+    <h1>Crie sua conta, leitor!</h1>
+
+       {% with messages = get_flashed_messages(with_categories=true) %}
+           {% if messages %}
+    <div class="flash-messages">
+                   {% for category, message in messages %}
+    <div class="flash {{ category }}">{{ message }}</div>
+                   {% endfor %}
+    </div>
+           {% endif %}
+       {% endwith %}
+
+    <main>
+        <form action="{{ url_for('cadastrar_usuario') }}" method="post">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+                <button type="submit">Cadastrar</button>
+        </form>
+        <p>Já possui uma conta?</p>
+        <a href="{{ url_for('login') }}">
+        <button type="button">Voltar para o login</button>
+        </a>
+    </main>
+</body>
+</html>
