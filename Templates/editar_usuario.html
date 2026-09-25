@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar usuarios</title>
+        <link rel="stylesheet" href="static/css/editar_usuario.css">
+
+</head>
+<body>
+
+    <h1>Editar usuário</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        <form action="{{ url_for('editar_usuario', id=usuarios[0]) }}" method="post">
+            <label for="nome">Nome do livro: </label>
+            <input type="text" id="nome" name="nome" value="{{ usuarios [1] }}" required>
+
+            <label for="email">Email: </label>
+            <input type="text" id="email" name="email" value="{{ usuarios [2] }}" required>
+
+            <label for="senha">Senha: </label>
+            <input type="text" id="senha" name="senha" value="{{ usuarios [3] }}" required>
+
+
+                <button type="submit" class="btn">Salvar alterações</button>
+
+        </form>
+    </main>
+
+</body>
+</html>
